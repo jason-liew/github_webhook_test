@@ -1,3 +1,0 @@
-from alpine
-
-ADD . /migrate
