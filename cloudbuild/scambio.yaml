@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/cloud-builders/go'
+  args: ['run','main.go']
+  env: ['PROJECT_ROOT=hello']
+- name: 'asia.gcr.io/pxn-staging-env/helm:v2.10.0'
+  args: ['beta_deploy.sh']
+  entrypoint: "/bin/bash"
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-northeast1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=basefex-beta'
+  - 'GCLOUD_PROJECT=pxn-staging-env'
+logsBucket: gs://cloud-build.logs.deq.peatio.com/scambio
